@@ -1,0 +1,15 @@
+p, h1, h2, h3, h4, h5, h6 {
+  font-family: "Arial";
+}
+
+#logoText {
+  font-family: 'Lobster', cursive;
+  padding-left: 20px;
+}
+
+#topNav {
+  background-color: #f7b756;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+}
