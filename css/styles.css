@@ -1,0 +1,44 @@
+p, h1, h2, h3, h4, h5, h6 {
+  font-family: "Arial";
+}
+
+#logoText {
+  font-family: 'Lobster', cursive;
+  padding-left: 20px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+#topNav {
+  background-color: #f7b756;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+#mainContainer {
+  margin: 50px 10% auto 10%;
+}
+
+#drinksList {
+  float: left;
+  width: 70%;
+}
+
+#recipeDiv {
+  float: right;
+  width: 25%;
+}
+
+.ingredientsList {
+  list-style-type: none;
+}
+
+.drinkThumbnail {
+  float: left;
+  border: 1px solid black;
+  max-width: 100px;
+  margin-right: 10px;
+}
