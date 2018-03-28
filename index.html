@@ -115,7 +115,20 @@
 
       <div id="recipeDiv">
         <h2>Share a Recipe</h2>
-
+        <form id="recipeForm">
+          <input id="drinkNameField" type="text" placeholder="Drink Name">
+          <textarea id="drinkDescField" rows="2" placeholder="Enter a brief description of your drink..."></textarea>
+          <input id="drinkIngredientField1" type="text" placeholder="Enter an ingredient">
+          <button id="addIngredientButton" type="button">Add Another Ingredient</button>
+          <textarea id="drinkDescField" rows="4" placeholder="Concisely explain how your drink is made..."></textarea>
+          <button id="drunkSubmitButton" type="submit">Submit Recipe</button>
+          <p><strong>Tip:</strong> Enter ingredients with descriptive amounts and measures, like this:</p>
+          <em><p class="exampleList">2 oz awesome sauce</p>
+            <p class="exampleList">3 splashes immortal bitters</p>
+            <p class="exampleList">a smidgen of hell pepper</em></p>
+            ...and so forth.
+          </p>
+        </form>
       </div><!--recipeDiv-->
     </div><!--mainContainer-->
 

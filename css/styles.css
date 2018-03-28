@@ -1,4 +1,4 @@
-p, h1, h2, h3, h4, h5, h6 {
+p, h1, h2, h3, h4, h5, h6, li {
   font-family: "Arial";
 }
 
@@ -18,8 +18,13 @@ p, h1, h2, h3, h4, h5, h6 {
   left: 0px;
 }
 
+.container {
+  max-width: 90%;
+  margin: auto;
+}
+
 #mainContainer {
-  margin: 50px 10% auto 10%;
+  margin-top: 60px;
 }
 
 #drinksList {
@@ -28,12 +33,18 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 #recipeDiv {
-  float: right;
   width: 25%;
+  top: 60px;
+  right: 15px;
+  position: fixed;
 }
 
 .ingredientsList {
   list-style-type: none;
+}
+
+.exampleList {
+  text-indent: 20px;
 }
 
 .drinkThumbnail {
@@ -41,4 +52,14 @@ p, h1, h2, h3, h4, h5, h6 {
   border: 1px solid black;
   max-width: 100px;
   margin-right: 10px;
+}
+
+.drinkDiv {
+  margin-bottom: 40px
+}
+
+input, button, textarea {
+  font-size: 18px;
+  width: 90%;
+  margin-top: 10px;
 }
