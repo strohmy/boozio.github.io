@@ -9,9 +9,23 @@ var config = {
 };
 firebase.initializeApp(config);
 
+// Get a reference to the database service
+var database = firebase.database();
+
 var ingredientIncrement = 0;
+
+var newRecipe = {};
+
+var newIngredients = [];
 
 $('#addIngredientButton').on('click', function() {
   ingredientIncrement += 1;
-  $('#drinkIngredientSpan').append("<input id='drinkIngredientField" + ingredientIncrement + "' type='text' placeholder='Enter another ingredient'>");
+  $('#drinkIngredientSpan').append("<input id='drinkIngredientField' type='text' placeholder='Enter another ingredient'>");
 });
+
+$('#recipeForm').on('submit', function(e) {
+  e.preventDefault();
+  newIngredients.push($('#drinkIngredientField').val());
+  newRecipe.name = $('drinkNameField').val();
+  console.log(newRecipe.name);
+})
