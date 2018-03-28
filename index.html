@@ -15,7 +15,7 @@
 
     <div id="mainContainer" class="container">
       <div id="drinksList">
-        <h2>Explore Drinks</h2>
+        <h2 class="hed">Explore Drinks</h2>
         <div class="drinkDiv">
           <h3>Vodka Martini</h3>
           <img class="drinkThumbnail" src="img/martini.jpg">
@@ -114,11 +114,13 @@
       </div><!--drinksList-->
 
       <div id="recipeDiv">
-        <h2>Share a Recipe</h2>
+        <h2 class="hed">Share a Recipe</h2>
         <form id="recipeForm">
           <input id="drinkNameField" type="text" placeholder="Drink Name">
           <textarea id="drinkDescField" rows="2" placeholder="Enter a brief description of your drink..."></textarea>
-          <input id="drinkIngredientField1" type="text" placeholder="Enter an ingredient">
+          <div id="drinkIngredientSpan">
+            <input id="drinkIngredientField0" type="text" placeholder="Enter an ingredient">
+          </div>
           <button id="addIngredientButton" type="button">Add Another Ingredient</button>
           <textarea id="drinkDescField" rows="4" placeholder="Concisely explain how your drink is made..."></textarea>
           <button id="drunkSubmitButton" type="submit">Submit Recipe</button>
@@ -132,7 +134,8 @@
       </div><!--recipeDiv-->
     </div><!--mainContainer-->
 
-    <script href="js/jquery-3.3.1.min.js"></script>
-    <script href="js/main.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

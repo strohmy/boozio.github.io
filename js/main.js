@@ -8,3 +8,10 @@ var config = {
   messagingSenderId: "646890601299"
 };
 firebase.initializeApp(config);
+
+var ingredientIncrement = 0;
+
+$('#addIngredientButton').on('click', function() {
+  ingredientIncrement += 1;
+  $('#drinkIngredientSpan').append("<input id='drinkIngredientField" + ingredientIncrement + "' type='text' placeholder='Enter another ingredient'>");
+});
