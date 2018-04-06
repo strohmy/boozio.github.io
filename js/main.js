@@ -14,18 +14,29 @@ var database = firebase.database();
 
 var ingredientIncrement = 0;
 
-var newRecipe = {};
+var newRecipe = {
+  name: "",
+  description: "",
+  ingredients: [],
+  instructions: ""
+};
 
-var newIngredients = [];
 
 $('#addIngredientButton').on('click', function() {
-  ingredientIncrement += 1;
-  $('#drinkIngredientSpan').append("<input id='drinkIngredientField' type='text' placeholder='Enter another ingredient'>");
+  $('#drinkIngredientSpan').append("<input type='text' placeholder='Enter another ingredient'>");
 });
 
 $('#recipeForm').on('submit', function(e) {
   e.preventDefault();
-  newIngredients.push($('#drinkIngredientField').val());
-  newRecipe.name = $('drinkNameField').val();
-  console.log(newRecipe.name);
+  var name = $('#drinkNameField').val();
+  var description = $('#drinkDescField').val();
+  var ingredients = [];
+  $('#drinkIngredientSpan').find(':input').map(function() {
+    ingredients.push($(this).val());
+  })
+  var instructions = $('#drinkInstructionField').val();
+  console.log(name);
+  console.log(description);
+  console.log(ingredients);
+  console.log(instructions);
 })
