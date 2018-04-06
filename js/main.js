@@ -12,16 +12,6 @@ firebase.initializeApp(config);
 // Get a reference to the database service
 var database = firebase.database();
 
-var ingredientIncrement = 0;
-
-var newRecipe = {
-  name: "",
-  description: "",
-  ingredients: [],
-  instructions: ""
-};
-
-
 $('#addIngredientButton').on('click', function() {
   $('#drinkIngredientSpan').append("<input type='text' placeholder='Enter another ingredient'>");
 });
@@ -39,4 +29,12 @@ $('#recipeForm').on('submit', function(e) {
   console.log(description);
   console.log(ingredients);
   console.log(instructions);
+
+  var newDrink = database.ref('drinks');
+  newDrink.push({
+    name: name,
+    description: description,
+    ingredients: ingredients,
+    instructions: instructions
+  });
 })
