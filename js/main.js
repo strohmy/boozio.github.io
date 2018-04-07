@@ -72,4 +72,7 @@ $('#recipeForm').on('submit', function(e) {
   .catch(function(error) {
     console.error("Error adding document: ", error);
   });
+
+  $('#recipeDiv').prepend("<div id='submittedNotice' class='userNotice'><p>Bam! Your recipe has been saved.</p></div>");
+  $('#submittedNotice').show().delay(4000).slideUp();
 });
