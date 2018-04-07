@@ -12,6 +12,45 @@ firebase.initializeApp(config);
 // Get a reference to the database service
 var database = firebase.database();
 
+var drinks = [];
+
+$(window).on('load', function() {
+  getDrinks();
+})
+
+function getDrinks() {
+  // Listen for changes in drinks data
+  database.ref('drinks').on('value', function (results) {
+    var allDrinks = results.val();
+
+    var ingredientListIncrement = 0;
+
+    for (var item in allDrinks) {
+      var context = {
+        name: allDrinks[item].name,
+        description: allDrinks[item].description,
+        ingredients: allDrinks[item].ingredients,
+        instructions: allDrinks[item].instructions,
+        submitDate: allDrinks[item].submitDate,
+        like: allDrinks[item].likes
+      };
+      ingredientListIncrement += 1;
+      $('#drinksList').append(
+        "<div class='drinkDiv'><div><h3>" + allDrinks[item].name + "</h3><i class='far fa-heart'></i> "
+        + allDrinks[item].likes + "<img class='drinkThumbnail' src='img/martini.jpg'></h3><p class='drinkDescription'>"
+        + allDrinks[item].description + "</p><h4 class='ingredientsSubhed'>Ingredients</h4><ul id='ingredientsList"
+        + ingredientListIncrement + "' class='ingredientsList'>"
+        + allDrinks[item].ingredients.join("<br/>") + "</ul><p class='drinkInstructions'>"
+        + allDrinks[item].instructions + "</p><p class='submittedDate'><strong>Submitted </strong>"
+        + allDrinks[item].submitDate + "</p></div></div><!--drinkDiv-->"
+      )
+      for (i = 0; i < allDrinks[item].ingredients.length; i++) {
+        //$('#ingredientsList' + ingredientListIncrement).append("<li>" + [i] + "</li>");
+      }
+    }
+  });
+}
+
 $('#addIngredientButton').on('click', function() {
   $('#drinkIngredientSpan').append("<input type='text' placeholder='Enter another ingredient'>");
 });
@@ -25,16 +64,22 @@ $('#recipeForm').on('submit', function(e) {
     ingredients.push($(this).val());
   })
   var instructions = $('#drinkInstructionField').val();
-  console.log(name);
-  console.log(description);
-  console.log(ingredients);
-  console.log(instructions);
+  var submitDate = Date(Date.now());
+  var likes = 0;
+  var likesInverter; 999999;
 
   var newDrink = database.ref('drinks');
+
   newDrink.push({
     name: name,
     description: description,
     ingredients: ingredients,
-    instructions: instructions
+    instructions: instructions,
+    submitDate: submitDate,
+    likes: likes,
+    likesInverter: likesInverter
   });
+  $('#recipeForm')[0].reset();
+  $('#recipeDiv').prepend("<div id='submittedNotice' class='userNotice'><p>Bam! Your recipe has been saved.</p></div>");
+  $('#submittedNotice').show().delay(6000).slideUp();
 })

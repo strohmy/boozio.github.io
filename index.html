@@ -14,104 +14,12 @@
     </header>
 
     <div id="mainContainer" class="container">
-      <div id="drinksList">
+
+      <div id="drinksListContainer">
         <h2 class="hed">Explore Drinks</h2>
-        <div class="drinkDiv">
-          <h3>Vodka Martini</h3>
-          <img class="drinkThumbnail" src="img/martini.jpg">
-          <p class="drinkDescription">
-            This classic cocktail is the height of sophistication, loved by true cocktail aficionados the world over, shaken or stirred.
-          </p>
-          <ul class="ingredientsList">
-            <li>light splash of vermouth</li>
-            <li>3 oz vodka</li>
-            <li>3 olives</li>
-          </ul>
-          <p class="drinkInstructions">
-            Splash vermouth into glass and swirl to coat. In a shaker, combine vodka with ice and shake vigorously. Strain into glass. Garnish with olives on a toothpick.
-          </p>
-        </div><!--drinkDiv-->
-
-        <div class="drinkDiv">
-          <h3>Vodka Martini</h3>
-          <img class="drinkThumbnail" src="img/martini.jpg">
-          <p class="drinkDescription">
-            This classic cocktail is the height of sophistication, loved by true cocktail aficionados the world over, shaken or stirred.
-          </p>
-          <ul class="ingredientsList">
-            <li>light splash of vermouth</li>
-            <li>3 oz vodka</li>
-            <li>3 olives</li>
-          </ul>
-          <p class="drinkInstructions">
-            Splash vermouth into glass and swirl to coat. In a shaker, combine vodka with ice and shake vigorously. Strain into glass. Garnish with olives on a toothpick.
-          </p>
-        </div><!--drinkDiv-->
-
-        <div class="drinkDiv">
-          <h3>Vodka Martini</h3>
-          <img class="drinkThumbnail" src="img/martini.jpg">
-          <p class="drinkDescription">
-            This classic cocktail is the height of sophistication, loved by true cocktail aficionados the world over, shaken or stirred.
-          </p>
-          <ul class="ingredientsList">
-            <li>light splash of vermouth</li>
-            <li>3 oz vodka</li>
-            <li>3 olives</li>
-          </ul>
-          <p class="drinkInstructions">
-            Splash vermouth into glass and swirl to coat. In a shaker, combine vodka with ice and shake vigorously. Strain into glass. Garnish with olives on a toothpick.
-          </p>
-        </div><!--drinkDiv-->
-
-        <div class="drinkDiv">
-          <h3>Vodka Martini</h3>
-          <img class="drinkThumbnail" src="img/martini.jpg">
-          <p class="drinkDescription">
-            This classic cocktail is the height of sophistication, loved by true cocktail aficionados the world over, shaken or stirred.
-          </p>
-          <ul class="ingredientsList">
-            <li>light splash of vermouth</li>
-            <li>3 oz vodka</li>
-            <li>3 olives</li>
-          </ul>
-          <p class="drinkInstructions">
-            Splash vermouth into glass and swirl to coat. In a shaker, combine vodka with ice and shake vigorously. Strain into glass. Garnish with olives on a toothpick.
-          </p>
-        </div><!--drinkDiv-->
-
-        <div class="drinkDiv">
-          <h3>Vodka Martini</h3>
-          <img class="drinkThumbnail" src="img/martini.jpg">
-          <p class="drinkDescription">
-            This classic cocktail is the height of sophistication, loved by true cocktail aficionados the world over, shaken or stirred.
-          </p>
-          <ul class="ingredientsList">
-            <li>light splash of vermouth</li>
-            <li>3 oz vodka</li>
-            <li>3 olives</li>
-          </ul>
-          <p class="drinkInstructions">
-            Splash vermouth into glass and swirl to coat. In a shaker, combine vodka with ice and shake vigorously. Strain into glass. Garnish with olives on a toothpick.
-          </p>
-        </div><!--drinkDiv-->
-
-        <div class="drinkDiv">
-          <h3>Vodka Martini</h3>
-          <img class="drinkThumbnail" src="img/martini.jpg">
-          <p class="drinkDescription">
-            This classic cocktail is the height of sophistication, loved by true cocktail aficionados the world over, shaken or stirred.
-          </p>
-          <ul class="ingredientsList">
-            <li>light splash of vermouth</li>
-            <li>3 oz vodka</li>
-            <li>3 olives</li>
-          </ul>
-          <p class="drinkInstructions">
-            Splash vermouth into glass and swirl to coat. In a shaker, combine vodka with ice and shake vigorously. Strain into glass. Garnish with olives on a toothpick.
-          </p>
-        </div><!--drinkDiv-->
-      </div><!--drinksList-->
+        <div id="drinksList">
+        </div><!--drinksList-->
+      </div>
 
       <div id="recipeDiv">
         <h2 class="hed">Share a Recipe</h2>
@@ -119,16 +27,17 @@
           <input id="drinkNameField" type="text" placeholder="Drink Name">
           <textarea id="drinkDescField" rows="2" placeholder="Enter a brief description of your drink..."></textarea>
           <div id="drinkIngredientSpan">
-            <input id="drinkIngredientField" type="text" placeholder="Enter an ingredient">
+            <input type="text" placeholder="Enter an ingredient">
+            <input type="text" placeholder="Enter another ingredient">
           </div>
-          <button id="addIngredientButton" type="button">Add Another Ingredient</button>
+          <button id="addIngredientButton" type="button">Add An Ingredient</button>
           <textarea id="drinkInstructionField" rows="4" placeholder="Concisely explain how your drink is made..."></textarea>
           <button id="drunkSubmitButton" type="submit">Submit Recipe</button>
           <p><strong>Tip:</strong> Enter ingredients with descriptive amounts and measures, like this:</p>
           <em><p class="exampleList">2 oz awesome sauce</p>
             <p class="exampleList">3 splashes immortal bitters</p>
             <p class="exampleList">a smidgen of hell pepper</em></p>
-            ...and so forth.
+            <p>...and so forth.</p>
           </p>
         </form>
       </div><!--recipeDiv-->
@@ -136,7 +45,8 @@
 
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="libraries/jquery-3.3.1.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

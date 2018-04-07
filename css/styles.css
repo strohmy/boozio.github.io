@@ -18,16 +18,11 @@ p, h1, h2, h3, h4, h5, h6, li {
   left: 0px;
 }
 
-.container {
-  max-width: 90%;
-  margin: auto;
-}
-
 #mainContainer {
   margin-top: 60px;
 }
 
-#drinksList {
+#drinksListContainer {
   float: left;
   width: 70%;
 }
@@ -39,27 +34,56 @@ p, h1, h2, h3, h4, h5, h6, li {
   position: fixed;
 }
 
+.container {
+  max-width: 90%;
+  margin: auto;
+}
+
+.drinkDiv {
+  background-color: #fcf8ef;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.drinkThumbnail {
+  float: right;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  max-width: 100px;
+  margin-right: 5px;
+}
+
+.exampleList {
+  text-indent: 10px;
+  margin: -2px -2px -2px 0;
+}
+
 .hed {
   border-bottom: 1px solid black;
 }
 
 .ingredientsList {
+  font-family: 'Arial';
   list-style-type: none;
 }
 
-.exampleList {
-  text-indent: 20px;
+.ingredientsSubhed {
+  margin-bottom: -10px;
 }
 
-.drinkThumbnail {
-  float: left;
-  border: 1px solid black;
-  max-width: 100px;
-  margin-right: 10px;
+.submittedDate {
+  font-size: 10px;
+  font-weight: lighter;
+  text-align: right;
 }
 
-.drinkDiv {
-  margin-bottom: 40px
+.userNotice {
+  background-color: #dbfce4;
+  text-align: center;
+  font-family: sans-serif;
+  padding: 10px;;
 }
 
 input, button, textarea {
