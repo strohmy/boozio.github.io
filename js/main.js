@@ -21,23 +21,22 @@ $(window).on('load', function() {
 
 function getDrinks() {
   // Listen for changes in drinks data
-  db.collection('drinks').get().then((querySnapshot) => {
+  db.collection('drinks').orderBy('likes', 'desc').get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      //console.log(`${doc.id} => ${doc.data()}`);
       $('#drinksList').append(`
         <div class='drinkDiv'>
           <div>
             <div class='thumbAndLikeBox'>
               <img class='drinkThumbnail' src='img/martini.jpg'><br/>
-              <p align='center'><i class='far fa-heart'></i> ${querySnapshot.likes}</p>
+              <p align='center'><i class='far fa-heart'></i> ${doc.data().likes}</p>
             </div>
-            <h3>${doc.name}</h3>
-            <p class='drinkDescription'>${doc.description}</p>
+            <h3>${doc.data().name}</h3>
+            <p class='drinkDescription'>${doc.data().description}</p>
             <h4 class='ingredientsSubhed'>Ingredients</h4>
             <ul id='ingredientsList' class='ingredientsList'>
-              ${doc.ingredients}
+              ${doc.data().ingredients.join('<br />')}
             </ul>
-            <p class='drinkInstructions'>${doc.instructions}</p>
+            <p class='drinkInstructions'>${doc.data().instructions}</p>
           </div>
         </div>
       `);
