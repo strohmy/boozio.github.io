@@ -47,8 +47,11 @@ p, h1, h2, h3, h4, h5, h6, li {
   border-radius: 5px;
 }
 
-.drinkThumbnail {
+.thumbAndLikeBox {
   float: right;
+}
+
+.drinkThumbnail {
   border: 1px solid lightgray;
   border-radius: 10px;
   max-width: 100px;
