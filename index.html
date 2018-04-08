@@ -24,14 +24,14 @@
       <div id="recipeDiv">
         <h2 class="hed">Share a Recipe</h2>
         <form id="recipeForm">
-          <input id="drinkNameField" type="text" placeholder="Drink Name">
-          <textarea id="drinkDescField" rows="2" placeholder="Enter a brief description of your drink..."></textarea>
+          <input id="drinkNameField" type="text" placeholder="Drink Name" required>
+          <textarea id="drinkDescField" rows="2" placeholder="Enter a brief description of your drink..." required></textarea>
           <div id="drinkIngredientSpan">
-            <input type="text" placeholder="Enter an ingredient">
-            <input type="text" placeholder="Enter another ingredient">
+            <input type="text" placeholder="Enter an ingredient" required>
+            <input type="text" placeholder="Enter another ingredient" required>
           </div>
           <button id="addIngredientButton" type="button">Add An Ingredient</button>
-          <textarea id="drinkInstructionField" rows="4" placeholder="Concisely explain how your drink is made..."></textarea>
+          <textarea id="drinkInstructionField" rows="4" placeholder="Concisely explain how your drink is made..." required></textarea>
           <button id="drunkSubmitButton" type="submit">Submit Recipe</button>
           <p><strong>Tip:</strong> Enter ingredients with descriptive amounts and measures, like this:</p>
           <em><p class="exampleList">2 oz awesome sauce</p>
