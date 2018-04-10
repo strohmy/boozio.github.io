@@ -22,6 +22,12 @@ p, h1, h2, h3, h4, h5, h6, li {
   margin-top: 60px;
 }
 
+#drinksList {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 #drinksListContainer {
   float: left;
   width: 70%;
