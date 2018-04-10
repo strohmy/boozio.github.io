@@ -15,6 +15,9 @@ var db = firebase.firestore();
 drinksDB = db.collection('drinks');
 
 var drinks = [];
+var heartIterator = 0;
+var currentLikes = 0;
+
 
 $(window).on('load', function() {
   getDrinks();
@@ -22,7 +25,6 @@ $(window).on('load', function() {
 
 function getDrinks() {
   drinksDB.orderBy('likes', 'desc').get().then((querySnapshot) => {
-    var heartIterator = 0;
     querySnapshot.forEach((doc) => {
       $('#drinksList').append(`
         <div class='drinkDiv'>
@@ -49,12 +51,12 @@ $('#drinksList').on('click', '.heart', function() {
   var currentLikeSpan = $('#'+gotID).find('span').attr('id');
   var currentRecord = drinksDB.doc(gotID);
   currentRecord.get().then(function(doc) {
-    var currentLikes = doc.data().likes;
+    currentLikes = doc.data().likes;
     currentLikes += 1;
     currentRecord.update({
       likes: currentLikes
     });
-    $('#'+currentLikeSpan).replaceWith(currentLikes);
+    $('#'+currentLikeSpan).html(currentLikes);
   })
   .catch(function(error) {
       console.log("Error getting document:", error);
