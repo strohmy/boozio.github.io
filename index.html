@@ -13,35 +13,45 @@
       </div><!--topNav-->
     </header>
 
-    <div id="mainContainer" class="container">
+    <div id="mainContainer">
 
-      <div id="drinksListContainer">
-        <h2 class="hed">Most Popular Drinks</h2>
-        <div id="drinksList">
-        </div><!--drinksList-->
+      <div id="buttonDiv">
+        <button class="postButton">+ ADD A DRINK</button>
       </div>
 
-      <div id="recipeDiv">
-        <h2 class="hed">Share a Recipe</h2>
-        <form id="recipeForm">
-          <input id="drinkNameField" type="text" placeholder="Drink Name" required>
-          <textarea id="drinkDescField" rows="2" placeholder="Enter a brief description of your drink..." required></textarea>
-          <div id="drinkIngredientSpan">
-            <input type="text" placeholder="Enter an ingredient" required>
-            <input type="text" placeholder="Enter another ingredient" required>
-          </div>
-          <button id="addIngredientButton" type="button">Add An Ingredient</button>
-          <textarea id="drinkInstructionField" rows="4" placeholder="Concisely explain how your drink is made..." required></textarea>
-          <button id="drunkSubmitButton" type="submit">Submit Recipe</button>
-          <p><strong>Tip:</strong> Enter ingredients with descriptive amounts and measures, like this:</p>
-          <em><p class="exampleList">2 oz awesome sauce</p>
-            <p class="exampleList">3 splashes immortal bitters</p>
-            <p class="exampleList">a smidgen of hell pepper</em></p>
-            <p>...and so forth.</p>
-          </p>
-        </form>
-      </div><!--recipeDiv-->
+      <h2 class="hed">Most Popular Drinks</h2>
+      <div id="drinksList">
+      </div><!--drinksList-->
+
+      <div class="modal">
+          <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="recipeDiv">
+              <h2 class="hed">Share a Recipe</h2>
+              <form id="recipeForm">
+                <input id="drinkNameField" type="text" placeholder="Drink Name" required>
+                <textarea id="drinkDescField" rows="2" placeholder="Enter a brief description of your drink..." required></textarea>
+                <div id="drinkIngredientSpan">
+                  <input type="text" placeholder="Enter an ingredient" required>
+                  <input type="text" placeholder="Enter another ingredient" required>
+                </div><!-- drinkIngredientSpan -->
+                <button id="addIngredientButton" class="recipeButton" type="button">Add An Ingredient</button>
+                <textarea id="drinkInstructionField" rows="4" placeholder="Concisely explain how your drink is made..." required></textarea>
+                <button id="drunkSubmitButton" class="recipeButton" type="submit">Submit Recipe</button>
+                <p><strong>Tip:</strong> Enter ingredients with descriptive amounts and measures, like this:</p>
+                <em><p class="exampleList">2 oz awesome sauce</p>
+                  <p class="exampleList">3 splashes immortal bitters</p>
+                  <p class="exampleList">a smidgen of hell pepper</em></p>
+                  <p>...and so forth.</p>
+                </p>
+              </form>
+            </div><!-- recipeDiv -->
+          </div><!-- modal-content -->
+      </div><!-- modal -->
+
     </div><!--mainContainer-->
+
+
 
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>

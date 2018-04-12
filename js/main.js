@@ -30,7 +30,10 @@ function getDrinks() {
         <div class='drinkDiv'>
             <div class='thumbAndLikeBox'>
               <img class='drinkThumbnail' src='img/martini.jpg'><br/>
-              <p id='${doc.id}' class='likesP' align='center'><i class='heart far fa-heart'></i> <span id='likeSpan-${heartIterator}' class='likeSpan'>${doc.data().likes}</span></p>
+              <p id='${doc.id}' class='likesP' align='center'>
+                <i class='heart far fa-heart'></i>
+                <span id='likeSpan-${heartIterator}' class='likeSpan'>${doc.data().likes}</span>
+              </p>
             </div>
             <h3>${doc.data().name}</h3>
             <p class='drinkDescription'>${doc.data().description}</p>
@@ -85,13 +88,29 @@ $('#recipeForm').on('submit', function(e) {
     instructions: instructions,
     likes: 0
   })
-  .then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
-  })
   .catch(function(error) {
     console.error("Error adding document: ", error);
   });
-
-  $('#recipeDiv').prepend("<div id='submittedNotice' class='userNotice'><p>Bam! Your recipe has been saved.</p></div>");
+  toggleModal();
+  $('#mainContainer').prepend("<div id='submittedNotice' class='userNotice'><p>Bam! Your recipe has been saved.</p></div>");
   $('#submittedNotice').show().delay(4000).slideUp();
 });
+
+//JS for Modal
+var modal = document.querySelector(".modal");
+var postButton = document.querySelector(".postButton");
+var closeButton = document.querySelector(".close-button");
+
+function toggleModal() {
+    modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+    if (event.target === modal) {
+        toggleModal();
+    }
+}
+
+postButton.addEventListener("click", toggleModal);
+closeButton.addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);

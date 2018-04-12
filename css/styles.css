@@ -2,47 +2,24 @@ p, h1, h2, h3, h4, h5, h6, li {
   font-family: "Arial";
 }
 
-#logoText {
-  font-family: 'Lobster', cursive;
-  padding-left: 20px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
-#topNav {
-  background-color: #f7b756;
-  overflow: hidden;
-  position: fixed;
+input, textarea {
+  font-size: 18px;
   width: 100%;
-  top: 0px;
-  left: 0px;
+  margin-top: 10px;
 }
 
-#mainContainer {
-  margin-top: 60px;
+.close-button {
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
 }
 
-#drinksList {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-#drinksListContainer {
-  float: left;
-  width: 70%;
-}
-
-#recipeDiv {
-  width: 25%;
-  top: 60px;
-  right: 15px;
-  position: fixed;
-}
-
-.container {
-  max-width: 90%;
-  margin: auto;
+.close-button:hover {
+  background-color: darkgray;
 }
 
 .drinkDiv {
@@ -51,10 +28,6 @@ p, h1, h2, h3, h4, h5, h6, li {
   margin-bottom: 20px;
   border: 1px solid lightgray;
   border-radius: 5px;
-}
-
-.thumbAndLikeBox {
-  float: right;
 }
 
 .drinkThumbnail {
@@ -82,10 +55,62 @@ p, h1, h2, h3, h4, h5, h6, li {
   margin-bottom: -10px;
 }
 
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 24rem;
+  border-radius: 0.5rem;
+}
+
+.postButton {
+  width: 100%;
+  font-size: 18px;
+  padding: 8px;
+  margin-bottom: 15px;
+  float: right;
+  background-color: lightblue;
+}
+
+.recipeButton {
+  font-size: 18px;
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  background-color: lightblue;
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
 .submittedDate {
   font-size: 10px;
   font-weight: lighter;
   text-align: right;
+}
+
+.thumbAndLikeBox {
+  float: right;
 }
 
 .userNotice {
@@ -95,8 +120,28 @@ p, h1, h2, h3, h4, h5, h6, li {
   padding: 10px;;
 }
 
-input, button, textarea {
-  font-size: 18px;
-  width: 90%;
-  margin-top: 10px;
+#drinksList {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#logoText {
+  font-family: 'Lobster', cursive;
+  padding-left: 20px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+#mainContainer {
+  margin: 60px 20px 20px 20px;
+}
+
+#topNav {
+  background-color: #f7b756;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
 }
