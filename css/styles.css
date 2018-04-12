@@ -2,6 +2,10 @@ p, h1, h2, h3, h4, h5, h6, li {
   font-family: "Arial";
 }
 
+body {
+  background-color: #f4f4f2;
+}
+
 input, textarea {
   font-size: 18px;
   width: 100%;
@@ -23,7 +27,7 @@ input, textarea {
 }
 
 .drinkDiv {
-  background-color: #fcf8ef;
+  background-color: white;
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid lightgray;
@@ -123,7 +127,7 @@ input, textarea {
 #drinksList {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 #logoText {
