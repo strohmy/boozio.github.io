@@ -9,15 +9,16 @@
   <body>
     <header>
       <div id="topNav">
-        <h1 id="logoText">Boozio</h1>
+        <div id="topNavContainer">
+          <div id="buttonDiv">
+            <button class="postButton">+ ADD A DRINK</button>
+          </div>
+          <h1 id="logoText">Boozio</h1>
+        </div>
       </div><!--topNav-->
     </header>
 
     <div id="mainContainer">
-
-      <div id="buttonDiv">
-        <button class="postButton">+ ADD A DRINK</button>
-      </div>
 
       <h2 class="hed">Most Popular Drinks</h2>
       <div id="drinksList">
@@ -35,9 +36,9 @@
                   <input type="text" placeholder="Enter an ingredient" required>
                   <input type="text" placeholder="Enter another ingredient" required>
                 </div><!-- drinkIngredientSpan -->
-                <button id="addIngredientButton" class="recipeButton" type="button">Add An Ingredient</button>
+                <button id="addIngredientButton" class="recipeButton" type="button">+ Another Ingredient</button>
                 <textarea id="drinkInstructionField" rows="4" placeholder="Concisely explain how your drink is made..." required></textarea>
-                <button id="drunkSubmitButton" class="recipeButton" type="submit">Submit Recipe</button>
+                <button id="drinkSubmitButton" class="recipeButton" type="submit">Submit Recipe</button>
                 <p><strong>Tip:</strong> Enter ingredients with descriptive amounts and measures, like this:</p>
                 <em><p class="exampleList">2 oz awesome sauce</p>
                   <p class="exampleList">3 splashes immortal bitters</p>

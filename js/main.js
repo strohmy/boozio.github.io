@@ -28,20 +28,21 @@ function getDrinks() {
     querySnapshot.forEach((doc) => {
       $('#drinksList').append(`
         <div class='drinkDiv'>
-            <div class='thumbAndLikeBox'>
-              <img class='drinkThumbnail' src='img/martini.jpg'><br/>
-              <p id='${doc.id}' class='likesP' align='center'>
-                <i class='heart far fa-heart'></i>
-                <span id='likeSpan-${heartIterator}' class='likeSpan'>${doc.data().likes}</span>
-              </p>
-            </div>
-            <h3>${doc.data().name}</h3>
-            <p class='drinkDescription'>${doc.data().description}</p>
-            <h4 class='ingredientsSubhed'>Ingredients</h4>
-            <ul id='ingredientsList' class='ingredientsList'>
-              ${doc.data().ingredients.join('<br />')}
-            </ul>
-            <p class='drinkInstructions'>${doc.data().instructions}</p>
+          <div class='imageBox'>
+            <p id='${doc.id}' class='likesP'>
+              <i class='heart far fa-heart'></i>
+              <span id='likeSpan-${heartIterator}' class='likeSpan'>${doc.data().likes}</span>
+            </p>
+            <img class='drinkThumbnail' src='img/oldfashioned.jpg'>
+          </div>
+
+          <h3>${doc.data().name}</h3>
+          <p class='drinkDescription'>${doc.data().description}</p>
+          <h4 class='ingredientsSubhed'>Ingredients</h4>
+          <ul id='ingredientsList' class='ingredientsList'>
+            ${doc.data().ingredients.join('<br />')}
+          </ul>
+          <p class='drinkInstructions'>${doc.data().instructions}</p>
         </div>
       `);
       heartIterator += 1;

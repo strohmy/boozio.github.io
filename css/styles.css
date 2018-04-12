@@ -29,16 +29,16 @@ input, textarea {
 .drinkDiv {
   background-color: white;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border: 1px solid lightgray;
   border-radius: 5px;
 }
 
 .drinkThumbnail {
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  max-width: 100px;
-  margin-right: 5px;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .exampleList {
@@ -50,6 +50,13 @@ input, textarea {
   border-bottom: 1px solid black;
 }
 
+.imageBox {
+  position: relative;
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+}
+
 .ingredientsList {
   font-family: 'Arial';
   list-style-type: none;
@@ -57,6 +64,18 @@ input, textarea {
 
 .ingredientsSubhed {
   margin-bottom: -10px;
+}
+
+.likesP {
+  float: left;
+  position: absolute;
+  bottom: 0px;
+  right: 16px;
+  background-color: #f7b756;
+  color: white;
+  padding: 6px;
+  border-radius: 10px;
+  z-index: 1000;
 }
 
 .modal {
@@ -70,6 +89,7 @@ input, textarea {
   visibility: hidden;
   transform: scale(1.1);
   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  z-index: 3000;
 }
 
 .modal-content {
@@ -89,15 +109,15 @@ input, textarea {
   padding: 8px;
   margin-bottom: 15px;
   float: right;
-  background-color: lightblue;
+  background-color: #dcfcd6;
 }
 
 .recipeButton {
   font-size: 18px;
   width: 100%;
-  padding: 8px;
+  padding: 4px;
   margin-top: 10px;
-  background-color: lightblue;
+  background-color: #e6eae5;
 }
 
 .show-modal {
@@ -113,10 +133,6 @@ input, textarea {
   text-align: right;
 }
 
-.thumbAndLikeBox {
-  float: right;
-}
-
 .userNotice {
   background-color: #dbfce4;
   text-align: center;
@@ -130,15 +146,23 @@ input, textarea {
   grid-template-columns: repeat(4, 1fr);
 }
 
+#drinkSubmitButton {
+  font-size: 18px;
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  background-color: #dcfcd6;
+}
+
 #logoText {
+  font-size: 34px;
   font-family: 'Lobster', cursive;
-  padding-left: 20px;
-  margin-top: 2px;
-  margin-bottom: 2px;
 }
 
 #mainContainer {
-  margin: 60px 20px 20px 20px;
+  width: 80%;
+  margin: auto;
+  margin-top: 100px;
 }
 
 #topNav {
@@ -148,4 +172,15 @@ input, textarea {
   width: 100%;
   top: 0px;
   left: 0px;
+  z-index: 2000;
+}
+
+#topNavContainer {
+  width: 80%;
+  margin: auto;
+}
+
+#buttonDiv {
+  float: right;
+  margin-top: 2px;
 }
