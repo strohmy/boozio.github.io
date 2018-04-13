@@ -27,22 +27,24 @@ function getDrinks() {
   drinksDB.orderBy('likes', 'desc').get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       $('#drinksList').append(`
-        <div class='drinkDiv'>
-          <div class='imageBox'>
-            <p id='${doc.id}' class='likesP'>
-              <i class='heart far fa-heart'></i>
-              <span id='likeSpan-${heartIterator}' class='likeSpan'>${doc.data().likes}</span>
-            </p>
-            <img class='drinkThumbnail' src='img/oldfashioned.jpg'>
-          </div>
+        <div class="card">
+          <p id='${doc.id}' class='likesP'>
+            <i class='heart far fa-heart'></i>
+            <span id='likeSpan-${heartIterator}' class='likeSpan'> ${doc.data().likes}</span>
+          </p>
+          <img class="card-img-top" src="img/oldfashioned.jpg">
+          <div class="card-body">
 
-          <h3>${doc.data().name}</h3>
-          <p class='drinkDescription'>${doc.data().description}</p>
-          <h4 class='ingredientsSubhed'>Ingredients</h4>
-          <ul id='ingredientsList' class='ingredientsList'>
-            ${doc.data().ingredients.join('<br />')}
-          </ul>
-          <p class='drinkInstructions'>${doc.data().instructions}</p>
+            <h3 class="card-title">${doc.data().name}</h3>
+            <p class="card-text">${doc.data().description}</p>
+             <p class="ingredientsSubhed">
+               <strong>Ingredients:</strong>
+             </p>
+             <ul class='ingredientsList'>
+              ${doc.data().ingredients.join('<br />')}
+             </ul>
+             <p class='drinkInstructions'><strong>Instructions:</strong> ${doc.data().instructions}</p>
+          </div>
         </div>
       `);
       heartIterator += 1;
@@ -67,9 +69,9 @@ $('#drinksList').on('click', '.heart', function() {
   });
 });
 
-$('#addIngredientButton').on('click', function() {
-  $('#drinkIngredientSpan').append("<input type='text' placeholder='Enter another ingredient'>");
-});
+//$('#addIngredientButton').on('click', function() {
+  //$('#drinkIngredientSpan').append("<input type='text' placeholder='Enter another ingredient'>");
+//});
 
 $('#recipeForm').on('submit', function(e) {
   e.preventDefault();
@@ -92,26 +94,6 @@ $('#recipeForm').on('submit', function(e) {
   .catch(function(error) {
     console.error("Error adding document: ", error);
   });
-  toggleModal();
   $('#mainContainer').prepend("<div id='submittedNotice' class='userNotice'><p>Bam! Your recipe has been saved.</p></div>");
   $('#submittedNotice').show().delay(4000).slideUp();
 });
-
-//JS for Modal
-var modal = document.querySelector(".modal");
-var postButton = document.querySelector(".postButton");
-var closeButton = document.querySelector(".close-button");
-
-function toggleModal() {
-    modal.classList.toggle("show-modal");
-}
-
-function windowOnClick(event) {
-    if (event.target === modal) {
-        toggleModal();
-    }
-}
-
-postButton.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
-window.addEventListener("click", windowOnClick);

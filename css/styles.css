@@ -1,7 +1,3 @@
-p, h1, h2, h3, h4, h5, h6, li {
-  font-family: "Arial";
-}
-
 body {
   background-color: #f4f4f2;
 }
@@ -12,104 +8,26 @@ input, textarea {
   margin-top: 10px;
 }
 
-.close-button {
-  float: right;
-  width: 1.5rem;
-  line-height: 1.5rem;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 0.25rem;
-  background-color: lightgray;
-}
-
-.close-button:hover {
-  background-color: darkgray;
-}
-
-.drinkDiv {
-  background-color: white;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-}
-
-.drinkThumbnail {
-  object-fit: cover;
-  object-position: center;
-  overflow: hidden;
-  max-width: 100%;
-}
-
-.exampleList {
-  text-indent: 10px;
-  margin: -2px -2px -2px 0;
-}
-
-.hed {
-  border-bottom: 1px solid black;
-}
-
-.imageBox {
-  position: relative;
-  height: 200px;
-  width: 100%;
-  overflow: hidden;
-}
-
 .ingredientsList {
-  font-family: 'Arial';
-  list-style-type: none;
+  list-style: none;
+  padding-left: 0
 }
 
 .ingredientsSubhed {
-  margin-bottom: -10px;
+  margin-bottom: -1px;
 }
 
 .likesP {
   float: left;
   position: absolute;
-  bottom: 0px;
+  top: 16px;
   right: 16px;
-  background-color: #f7b756;
+  background: rgba(0,0,0,0.5);
   color: white;
   padding: 6px;
   border-radius: 10px;
   z-index: 1000;
-}
-
-.modal {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(1.1);
-  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-  z-index: 3000;
-}
-
-.modal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 1rem 1.5rem;
-  width: 24rem;
-  border-radius: 0.5rem;
-}
-
-.postButton {
-  width: 100%;
-  font-size: 18px;
-  padding: 8px;
-  margin-bottom: 15px;
-  float: right;
-  background-color: #dcfcd6;
+  font-size: 20px;
 }
 
 .recipeButton {
@@ -118,13 +36,6 @@ input, textarea {
   padding: 4px;
   margin-top: 10px;
   background-color: #e6eae5;
-}
-
-.show-modal {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1.0);
-  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
 .submittedDate {
@@ -143,7 +54,7 @@ input, textarea {
 #drinksList {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 #drinkSubmitButton {
@@ -173,11 +84,6 @@ input, textarea {
   top: 0px;
   left: 0px;
   z-index: 2000;
-}
-
-#topNavContainer {
-  width: 80%;
-  margin: auto;
 }
 
 #buttonDiv {
