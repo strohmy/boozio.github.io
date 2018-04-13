@@ -5,15 +5,19 @@ firebase.initializeApp(
     authDomain: "boozio-221e3.firebaseapp.com",
     databaseURL: "https://boozio-221e3.firebaseio.com",
     projectId: "boozio-221e3",
-    storageBucket: "",
+    storageBucket: "gs://boozio-221e3.appspot.com",
     messagingSenderId: "646890601299"
   }
 );
 
 // Get a reference to the database service
 var db = firebase.firestore();
-drinksDB = db.collection('drinks');
+var storage = firebase.storage();
+var storageRef = storage.ref();
 
+var drinksDB = db.collection('drinks');
+
+const timestamp = firebase.firestore.FieldValue.serverTimestamp()
 var drinks = [];
 var heartIterator = 0;
 var currentLikes = 0;
@@ -24,9 +28,9 @@ $(window).on('load', function() {
 })
 
 function getDrinks() {
-  drinksDB.orderBy('likes', 'desc').get().then((querySnapshot) => {
+  drinksDB.orderBy('submitted', 'desc').get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      $('#drinksList').append(`
+      $('#latestDrinksList').append(`
         <div class="card">
           <p id='${doc.id}' class='likesP'>
             <i class='heart far fa-heart'></i>
@@ -52,7 +56,7 @@ function getDrinks() {
   })
 }
 
-$('#drinksList').on('click', '.heart', function() {
+$('#latestDrinksList').on('click', '.heart', function() {
   var gotID = $(this).closest('.likesP').attr('id');
   var currentLikeSpan = $('#'+gotID).find('span').attr('id');
   var currentRecord = drinksDB.doc(gotID);
@@ -69,9 +73,9 @@ $('#drinksList').on('click', '.heart', function() {
   });
 });
 
-//$('#addIngredientButton').on('click', function() {
-  //$('#drinkIngredientSpan').append("<input type='text' placeholder='Enter another ingredient'>");
-//});
+$('#addIngredientButton').on('click', function() {
+  $('#drinkIngredientSpan').append("<input type='text' placeholder='Enter another ingredient'>");
+});
 
 $('#recipeForm').on('submit', function(e) {
   e.preventDefault();
@@ -89,11 +93,38 @@ $('#recipeForm').on('submit', function(e) {
     description: description,
     ingredients: ingredients,
     instructions: instructions,
-    likes: 0
+    likes: 0,
+    submitted: timestamp
   })
   .catch(function(error) {
     console.error("Error adding document: ", error);
   });
-  $('#mainContainer').prepend("<div id='submittedNotice' class='userNotice'><p>Bam! Your recipe has been saved.</p></div>");
-  $('#submittedNotice').show().delay(4000).slideUp();
+  $('#recipeFormModal').modal('toggle')
+  $('#latestDrinksList').prepend(`
+    <div class="card">
+      <p class='likesP'>
+        <i class='heart far fa-heart'></i>
+        <span class='likeSpan'> ${likes}</span>
+      </p>
+      <img class="card-img-top" src="img/oldfashioned.jpg">
+      <div class="card-body">
+
+        <h3 class="card-title">${name}</h3>
+        <p class="card-text">${description}</p>
+         <p class="ingredientsSubhed">
+           <strong>Ingredients:</strong>
+         </p>
+         <ul class='ingredientsList'>
+          ${ingredients.join('<br />')}
+         </ul>
+         <p class='drinkInstructions'><strong>Instructions:</strong> ${instructions}</p>
+      </div>
+    </div>
+  `);
+  //$('#mainContainer').prepend("<div id='submittedNotice' class='alert alert-success fade' role='alert'>Your drink has been submitted.</div>");
+  //$('#submittedNotice').alert('close');
+});
+
+$('#recipeFormModal').on('shown.bs.modal', function () {
+  $('#drinkNameField').trigger('focus')
 });

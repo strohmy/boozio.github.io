@@ -8,6 +8,16 @@ input, textarea {
   margin-top: 10px;
 }
 
+.drinksList {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.exampleList {
+  padding-left: 15px;
+}
+
 .ingredientsList {
   list-style: none;
   padding-left: 0
@@ -26,16 +36,7 @@ input, textarea {
   color: white;
   padding: 6px;
   border-radius: 10px;
-  z-index: 1000;
   font-size: 20px;
-}
-
-.recipeButton {
-  font-size: 18px;
-  width: 100%;
-  padding: 4px;
-  margin-top: 10px;
-  background-color: #e6eae5;
 }
 
 .submittedDate {
@@ -51,18 +52,13 @@ input, textarea {
   padding: 10px;;
 }
 
-#drinksList {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
+#addIngredientButton {
+  float: right;
+  margin-top: 4px;
 }
 
 #drinkSubmitButton {
-  font-size: 18px;
-  width: 100%;
-  padding: 8px;
-  margin-top: 10px;
-  background-color: #dcfcd6;
+  float: right;
 }
 
 #logoText {
@@ -83,7 +79,7 @@ input, textarea {
   width: 100%;
   top: 0px;
   left: 0px;
-  z-index: 2000;
+  z-index: 100;
 }
 
 #buttonDiv {

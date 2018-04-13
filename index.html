@@ -13,7 +13,7 @@
         <div id="topNavContainer" class="container">
           <a id="logoText">Boozio</a>
           <span id="buttonDiv">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#recipeFormModal">
               <strong>+</strong> Add a drink
             </button>
           </span>
@@ -23,64 +23,55 @@
 
     <div id="mainContainer" class="container">
 
-      <h2 class="hed">Most Popular Drinks</h2>
-      <div id="drinksList">
+      <h2>Latest Drinks</h2>
+      <div id="latestDrinksList" class="drinksList">
       </div><!--drinksList-->
 
       <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="recipeFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <h3 class="modal-title" id="exampleModalLongTitle">Share a Recipe</h3>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal">
-          <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div id="recipeDiv">
-              <h2 class="hed">Share a Recipe</h2>
+            <div id="recipeDiv" class="modal-body">
               <form id="recipeForm">
+                <div class="custom-file">
+                  <input id="customFile" type="file" class="custom-file-input">
+                  <label class="custom-file-label" for="customFile" required>Upload a photo</label>
+                </div>
                 <input id="drinkNameField" type="text" placeholder="Drink Name" required>
                 <textarea id="drinkDescField" rows="2" placeholder="Enter a brief description of your drink..." required></textarea>
                 <div id="drinkIngredientSpan">
                   <input type="text" placeholder="Enter an ingredient" required>
                   <input type="text" placeholder="Enter another ingredient" required>
                 </div><!-- drinkIngredientSpan -->
-                <button id="addIngredientButton" class="recipeButton" type="button">+ Another Ingredient</button>
+                <button id="addIngredientButton" class="btn" type="button">+ Another Ingredient</button>
                 <textarea id="drinkInstructionField" rows="4" placeholder="Concisely explain how your drink is made..." required></textarea>
-                <button id="drinkSubmitButton" class="recipeButton" type="submit">Submit Recipe</button>
-                <p><strong>Tip:</strong> Enter ingredients with descriptive amounts and measures, like this:</p>
-                <em><p class="exampleList">2 oz awesome sauce</p>
-                  <p class="exampleList">3 splashes immortal bitters</p>
-                  <p class="exampleList">a smidgen of hell pepper</em></p>
-                  <p>...and so forth.</p>
-                </p>
+                <p><strong>Tip:</strong> Enter ingredients with descriptive amounts and measures, like this:<br/>
+                <em><span class="exampleList">2 oz awesome sauce<br/></span>
+                <span class="exampleList">3 splashes immortal bitters<br/></span>
+                <span class="exampleList">a smidgen of hell pepper</em><br/></span>
+                  ...and so forth.</p>
+                <button id="drinkSubmitButton" type="submit" class="btn btn-primary">Save changes</button>
               </form>
             </div><!-- recipeDiv -->
-          </div><!-- modal-content -->
-      </div><!-- modal -->
+          </div>
+        </div>
+      </div>
 
     </div><!--mainContainer-->
 
-
-
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-storage.js"></script>
     <script src="libraries/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
   </body>
