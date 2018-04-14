@@ -70,12 +70,13 @@ function getDrinks() {
     });
   });
   drinksDB.orderBy('likes', 'desc').get().then((querySnapshot) => {
+    popHeartIterator = -1;
     querySnapshot.forEach((doc) => {
       $('#popularDrinksList').append(`
         <div class="card">
           <p id='${doc.id}' class='likesP'>
             <i class='heart far fa-heart'></i>
-            <span id='likeSpan-${heartIterator}' class='likeSpan'> ${doc.data().likes}</span>
+            <span id='likeSpan-${popHeartIterator}' class='likeSpan'> ${doc.data().likes}</span>
           </p>
           <img class="card-img-top" src="${doc.data().imageURL}">
           <div class="card-body">
@@ -92,14 +93,16 @@ function getDrinks() {
           </div>
         </div>
       `);
-      heartIterator += 1;
+      popHeartIterator -= 1;
     });
   });
 }
 
-$('#latestDrinksList').on('click', '.heart', function() {
+//Increment likes by clicking the heart icons
+$('.drinksList').on('click', '.heart', function() {
   var gotID = $(this).closest('.likesP').attr('id');
-  var currentLikeSpan = $('#'+gotID).find('span').attr('id');
+  var latestLikeSpan = $('#latestDrinksList').find('#'+gotID).find('span').attr('id');
+  var popLikeSpan = $('#popularDrinksList').find('#'+gotID).find('span').attr('id')
   var currentRecord = drinksDB.doc(gotID);
   currentRecord.get().then(function(doc) {
     currentLikes = doc.data().likes;
@@ -107,7 +110,8 @@ $('#latestDrinksList').on('click', '.heart', function() {
     currentRecord.update({
       likes: currentLikes
     });
-    $('#'+currentLikeSpan).html(currentLikes);
+    $('#'+latestLikeSpan).html(currentLikes);
+    $('#'+popLikeSpan).html(currentLikes);
   })
   .catch(function(error) {
       console.log("Error getting document:", error);
