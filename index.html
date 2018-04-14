@@ -23,9 +23,21 @@
 
     <div id="mainContainer" class="container">
 
-      <h2>Latest Drinks</h2>
+      <ul class="nav nav-tabs nav-justified">
+        <li class="nav-item">
+          <a id="latestTab" class="nav-link active" href="#"><strong>Latest Drinks</strong></a>
+        </li>
+        </li>
+        <li class="nav-item">
+          <a id="popularTab" class="nav-link" href="#"><strong>Most Popular Drinks</strong></a>
+        </li>
+      </ul>
+
       <div id="latestDrinksList" class="drinksList">
-      </div><!--drinksList-->
+      </div>
+
+      <div id="popularDrinksList" class="drinksList d-none">
+      </div>
 
       <!-- Modal -->
       <div class="modal fade" id="recipeFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -41,7 +53,7 @@
               <form id="recipeForm">
                 <div class="custom-file">
                   <input id="customFile" type="file" class="custom-file-input">
-                  <label class="custom-file-label" for="customFile" required>Upload a photo</label>
+                  <label class="custom-file-label" for="customFile">Upload a photo</label>
                 </div>
                 <input id="drinkNameField" type="text" placeholder="Drink Name" required>
                 <textarea id="drinkDescField" rows="2" placeholder="Enter a brief description of your drink..." required></textarea>
