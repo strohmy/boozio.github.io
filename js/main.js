@@ -51,6 +51,20 @@ $('#popularTab').on('click', function() {
   $('#latestDrinksList').addClass('d-none');
 });
 
+$('#latestDrinksList').on('click', '.deleteDrinkButton', function() {
+  var gotID = $(this).closest('.card').find('.likesP-liked').attr('id');
+  $(this).closest('.card').remove();
+  deleteDrink(gotID);
+});
+
+function deleteDrink(drinkID) {
+  drinksDB.doc(drinkID).delete().then(function() {
+    console.log(drinkID + " deleted");
+  }).catch(function(error) {
+    console.error("Error removing document: ", error);
+  });
+}
+
 function getDrinks() {
   drinksDB.orderBy('submitted', 'desc').get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -170,39 +184,43 @@ $('#recipeForm').on('submit', function(e) {
       imageURL: imageURL,
       userName: userName
     })
+    .then(function(docRef) {
+      var latestRecipe = `
+        <div class="card">
+        <p id='${docRef.id}' class='likesP-liked'>
+          <i class="fas fa-heart"></i>
+            <span class='likeSpan'> ${likes}</span>
+          </p>
+          <img class="card-img-top" src="${imageURL}">
+          <div class="card-body">
+
+            <h3 class="card-title">${name}</h3>
+            <p class="card-text">${description}</p>
+             <p class="ingredientsSubhed">
+               <strong>Ingredients:</strong>
+             </p>
+             <ul class='ingredientsList'>
+              ${ingredients.join('<br />')}
+             </ul>
+             <p class='drinkInstructions'><strong>Instructions:</strong> ${instructions}</p>
+             <p class='userCredit'>Submitted by ${userName}</p>
+             <button class="btn btn-sm btn-outline-danger deleteDrinkButton">delete drink</button>
+          </div>
+        </div>
+      `;
+      $('#latestDrinksList').prepend(latestRecipe);
+      $('#popularDrinksList').append(latestRecipe);
+    })
     .catch(function(error) {
       console.error("Error adding document: ", error);
     });
     $('#recipeFormModal').modal('toggle')
-    var latestRecipe = `
-      <div class="card">
-        <p class='likesP-liked'>
-        <i class="fas fa-heart"></i>
-          <span class='likeSpan'> ${likes}</span>
-        </p>
-        <img class="card-img-top" src="${imageURL}">
-        <div class="card-body">
-
-          <h3 class="card-title">${name}</h3>
-          <p class="card-text">${description}</p>
-           <p class="ingredientsSubhed">
-             <strong>Ingredients:</strong>
-           </p>
-           <ul class='ingredientsList'>
-            ${ingredients.join('<br />')}
-           </ul>
-           <p class='drinkInstructions'><strong>Instructions:</strong> ${instructions}</p>
-           <p class='userCredit'>Submitted by ${userName}</p>
-        </div>
-      </div>
-    `
-    $('#latestDrinksList').prepend(latestRecipe);
-    $('#popularDrinksList').append(latestRecipe);
   }).catch((error) => {
     console.error(error);
   });
 });
 
+//when the modal loads, focus on the drink name field
 $('#recipeFormModal').on('shown.bs.modal', function () {
   $('#drinkNameField').trigger('focus')
 });

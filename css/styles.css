@@ -8,6 +8,10 @@ input, textarea {
   margin-top: 10px;
 }
 
+.deleteDrinkButton {
+  float: right;
+}
+
 .drinksList {
   display: grid;
   grid-gap: 10px;
