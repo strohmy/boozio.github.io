@@ -12,10 +12,14 @@
       <nav id="topNav" class="navbar">
         <div id="topNavContainer" class="container">
           <a id="logoText">Boozio</a>
-          <span id="buttonDiv">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#recipeFormModal">
-              <strong>+</strong> Add a drink
-            </button>
+            <div id="loginFormDiv">
+              <form id="loginForm" class="form-inline">
+                <strong>To share a recipe, sign in by entering your name </strong> <i id="signInArrow" class="fas fa-arrow-circle-right"></i>
+                <input type="text" class="form-control mb-2 mr-sm-2" id="userNameField" placeholder="Enter name..." required>
+              </form>
+            </div>
+          <span id="addDrinkButtonDiv" class="d-none">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#recipeFormModal"><strong>+</strong> Add a drink</button>
           </span>
         </div>
       </nav><!--topNav-->
@@ -85,13 +89,13 @@
     </div><!--mainContainer-->
 
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-storage.js"></script>
     <script src="libraries/jquery-3.3.1.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

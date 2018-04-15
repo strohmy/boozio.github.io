@@ -23,9 +23,19 @@ var drinks = [];
 var heartIterator = 0;
 var currentLikes = 0;
 
+var userName = "anonymous";
+
 $(window).on('load', function() {
   getDrinks();
-})
+});
+
+$('#loginForm').on('submit', function(e) {
+  e.preventDefault();
+  userName = $('#userNameField').val();
+  $('#loginFormDiv').addClass('d-none');
+  $('#addDrinkButtonDiv').removeClass('d-none');
+  $('#addDrinkButtonDiv').find('button').append(", " + userName);
+});
 
 $('#latestTab').on('click', function() {
   $('#latestTab').addClass('active');
@@ -62,6 +72,7 @@ function getDrinks() {
               ${doc.data().ingredients.join('<br />')}
              </ul>
              <p class='drinkInstructions'><strong>Instructions:</strong> ${doc.data().instructions}</p>
+             <p class='userCredit'>Submitted by ${doc.data().userName}</p>
           </div>
         </div>
       `);
@@ -90,6 +101,7 @@ function getDrinks() {
               ${doc.data().ingredients.join('<br />')}
              </ul>
              <p class='drinkInstructions'><strong>Instructions:</strong> ${doc.data().instructions}</p>
+             <p class='userCredit'>Submitted by ${doc.data().userName}</p>
           </div>
         </div>
       `);
@@ -99,13 +111,14 @@ function getDrinks() {
 }
 
 //Increment likes by clicking the heart icons
-$('.drinksList').on('click', '.heart', function() {
-  var gotID = $(this).closest('.likesP').attr('id');
+$('.drinksList').on('click', '.likesP', function() {
+  var currentLikeSpan = this;
+  var gotID = $(this).attr('id');
   var latestLikeSpan = $('#latestDrinksList').find('#'+gotID).find('span').attr('id');
   var popLikeSpan = $('#popularDrinksList').find('#'+gotID).find('span').attr('id')
   var currentRecord = drinksDB.doc(gotID);
   currentRecord.get().then(function(doc) {
-    currentLikes = doc.data().likes;
+    currentLikes = doc.data().likes
     currentLikes += 1;
     currentRecord.update({
       likes: currentLikes
@@ -114,8 +127,11 @@ $('.drinksList').on('click', '.heart', function() {
     $('#'+popLikeSpan).html(currentLikes);
   })
   .catch(function(error) {
-      console.log("Error getting document:", error);
+    console.log("Error getting document:", error);
   });
+  $(this).removeClass('likesP').addClass('likesP-liked');
+  $(this).find('.heart').remove();
+  $(this).prepend('<i class="fas fa-heart"></i>');
 });
 
 $('#addIngredientButton').on('click', function() {
@@ -151,7 +167,8 @@ $('#recipeForm').on('submit', function(e) {
       instructions: instructions,
       likes: 0,
       submitted: timestamp,
-      imageURL: imageURL
+      imageURL: imageURL,
+      userName: userName
     })
     .catch(function(error) {
       console.error("Error adding document: ", error);
@@ -159,8 +176,8 @@ $('#recipeForm').on('submit', function(e) {
     $('#recipeFormModal').modal('toggle')
     var latestRecipe = `
       <div class="card">
-        <p class='likesP'>
-          <i class='heart far fa-heart'></i>
+        <p class='likesP-liked'>
+        <i class="fas fa-heart"></i>
           <span class='likeSpan'> ${likes}</span>
         </p>
         <img class="card-img-top" src="${imageURL}">
@@ -175,6 +192,7 @@ $('#recipeForm').on('submit', function(e) {
             ${ingredients.join('<br />')}
            </ul>
            <p class='drinkInstructions'><strong>Instructions:</strong> ${instructions}</p>
+           <p class='userCredit'>Submitted by ${userName}</p>
         </div>
       </div>
     `

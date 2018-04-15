@@ -33,7 +33,7 @@ input, textarea {
   margin-bottom: -1px;
 }
 
-.likesP {
+.likesP, .likesP-liked {
   float: left;
   position: absolute;
   top: 16px;
@@ -51,11 +51,21 @@ input, textarea {
   text-align: right;
 }
 
+.userCredit {
+  text-align: right;
+  font-size: 12px;
+}
+
 .userNotice {
   background-color: #dbfce4;
   text-align: center;
   font-family: sans-serif;
   padding: 10px;;
+}
+
+#addDrinkButtonDiv {
+  float: right;
+  margin-top: 2px;
 }
 
 #addIngredientButton {
@@ -83,6 +93,11 @@ input, textarea {
   margin-top: 100px;
 }
 
+#signInArrow {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
 #topNav {
   background-color: #f7b756;
   overflow: hidden;
@@ -91,9 +106,4 @@ input, textarea {
   top: 0px;
   left: 0px;
   z-index: 100;
-}
-
-#buttonDiv {
-  float: right;
-  margin-top: 2px;
 }
