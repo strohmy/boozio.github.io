@@ -67,6 +67,11 @@ input, textarea {
   float: right;
 }
 
+#loadingDiv {
+  margin: auto;
+  margin-top: 150px;
+}
+
 #logoText {
   font-size: 34px;
   font-family: 'Lobster', cursive;

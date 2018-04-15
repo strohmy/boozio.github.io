@@ -23,7 +23,6 @@ var drinks = [];
 var heartIterator = 0;
 var currentLikes = 0;
 
-
 $(window).on('load', function() {
   getDrinks();
 })
@@ -68,6 +67,7 @@ function getDrinks() {
       `);
       heartIterator += 1;
     });
+    $('#loadingDiv').remove();
   });
   drinksDB.orderBy('likes', 'desc').get().then((querySnapshot) => {
     popHeartIterator = -1;
